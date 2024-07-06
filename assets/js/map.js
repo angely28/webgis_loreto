@@ -1,6 +1,6 @@
 var map = L.map('map', {
-    center: [-3.749359114518854, -73.24507089716948],
-    zoom: 18,
+    center: [-17.993906382321935, -70.23369910267283],
+    zoom: 14,
     minZoom: 10,
     maxZoom: 20,
 });
@@ -19,111 +19,150 @@ var map = L.map('map', {
     subdomains:['mt0','mt1','mt2','mt3'] 
 });  
     googleHybrid.addTo(map);
+
+    L.control.scale().addTo(map);
+
+   L.marker([-17.976409036591633, -70.2308169786747], {draggable: true}).addTo(map);
+   L.marker([-18.00228049087631, -70.25476622094791], {draggable: true}).addTo(map);
+   L.marker([-18.00879994582738, -70.24869386652445], {draggable: true}).addTo(map);
+   L.marker([-17.994461484804223, -70.25224910335575], {draggable: true}).addTo(map);
+   L.marker([-17.993817697243493, -70.24487381790895], {draggable: true}).addTo(map);
+   L.marker([-18.011501140520956, -70.24572281957383], {draggable: true}).addTo(map);
+
+    var latlngs = [
+        [-18.011734, -70.246472],
+        [-18.011901, -70.246210],
+        [-18.011185, -70.245200],
+        [-18.010914, -70.245300],
+        [-18.010176, -70.245737],
+        [-18.008153, -70.246927],
+        [-18.007286, -70.247375],
+        [-18.007103, -70.247214],
+        [-18.006752, -70.246501],
+        [-18.006840, -70.246232],
+        [-18.006695, -70.245911],
+        [-18.006183, -70.243647],
+        [-18.005850, -70.242044],
+        [-18.005378, -70.241105],
+        [-18.003907, -70.239187],
+        [-18.002510, -70.237294],
+        [-18.001338, -70.234738],
+        [-17.999898, -70.235637],
+        [-17.996865, -70.230877],
+        [-17.998011, -70.229912],
+        [-17.996915, -70.228764],
+        [-17.996163, -70.229476],
+        [-17.995598, -70.229729],
+        [-17.996126, -70.231436],
+        [-17.997351, -70.233519],
+        [-17.998717, -70.236435],
+        [-17.997867, -70.237121],
+        [-17.998256, -70.237649],
+        [-17.998476, -70.237650],
+        [-18.002838, -70.243457],
+        [-18.001890, -70.244244],
+        [-18.000280, -70.244950],
+        [-17.997155, -70.244967],
+        [-17.994263, -70.244882],
+        [-17.994451, -70.251915],
+        [-17.994860, -70.253070],
+        [-17.998139, -70.257665],
+        [-18.001114, -70.261836],
+        [-18.001599, -70.262710],
+        [-18.001828, -70.263160],
+        [-18.002112, -70.262931],
+        [-18.002418, -70.261013],
+        [-18.002979, -70.259595],
+        [-18.003572, -70.258882],
+        [-18.003785, -70.258205],
+        [-18.005323, -70.257165],
+        [-18.006437, -70.257391],
+        [-18.007797, -70.257439],
+        [-18.009424, -70.257771],
+        [-18.011000, -70.258640],
+        [-18.010626, -70.257703],
+        [-18.010581, -70.257139],
+        [-18.011556, -70.255980],
+        [-18.009752, -70.252689],
+        [-18.009716, -70.252445],
+        [-18.008650, -70.250593],
+        [-18.008095, -70.249270],
+        [-18.010644, -70.247316],
+        [-18.011734, -70.246472]        
     
-var farmacias = L.tileLayer.wms("http://localhost:8080/geoserver/webgis_loreto/wms?", {
-layers: "webgis_loreto:famarcia_loreto", //gisweb:famarcia_loreto
-format: 'image/png',
-transparent: true,
-version: '1.1.1',
-attribution: "SENCICO"
-});
-farmacias.addTo(map);
+    ];
+    
+    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
 
-var hospitales = L.tileLayer.wms("http://localhost:8080/geoserver/webgis_loreto/wms?", {
-layers: "webgis_loreto:hospital_loreto", //gisweb:hospital_loreto
-format: 'image/png',
-transparent: true,
-version: '1.1.1',
-attribution: "SENCICO"
-});
-hospitales.addTo(map);
-
-var hoteles = L.tileLayer.wms("http://localhost:8080/geoserver/webgis_loreto/wms?", {
-layers: "webgis_loreto:hotel_loreto", //gisweb:hotel_loreto
-format: 'image/png',
-transparent: true,
-version: '1.1.1',
-attribution: "SENCICO"
-});
-hoteles.addTo(map);
-
-var loreto = L.tileLayer.wms("http://localhost:8080/geoserver/webgis_loreto/wms?", {
-layers: "webgis_loreto:loreto", //gisweb:loreto
-format: 'image/png',
-transparent: true,
-version: '1.1.1',
-attribution: "SENCICO"
-});
-loreto.addTo(map);
-
-var mercados = L.tileLayer.wms("http://localhost:8080/geoserver/webgis_loreto/wms?", {
-layers: "webgis_loreto:mercado_loreto", //gisweb:mercado_loret
-format: 'image/png',
-transparent: true,
-version: '1.1.1',
-attribution: "SENCICO"
-});
-mercados.addTo(map);
-
-var museos = L.tileLayer.wms("http://localhost:8080/geoserver/webgis_loreto/wms?", {
-layers: "webgis_loreto:museo_loreto", //gisweb:museo_loreto
-format: 'image/png',
-transparent: true,
-version: '1.1.1',
-attribution: "SENCICO"
-});
-museos.addTo(map);
-
-var parques = L.tileLayer.wms("http://localhost:8080/geoserver/webgis_loreto/wms?", {
-layers: "webgis_loreto:parque_loreto", //gisweb:parque_loret
-format: 'image/png',
-transparent: true,
-version: '1.1.1',
-attribution: "SENCICO"
-});
-parques.addTo(map);
-
-var restaurantes = L.tileLayer.wms("http://localhost:8080/geoserver/webgis_loreto/wms?", {
-layers: "webgis_loreto:restaurant_loreto", //gisweb:restaurant_loreto
-format: 'image/png',
-transparent: true,
-version: '1.1.1',
-attribution: "SENCICO"
-});
-restaurantes.addTo(map);
-
-var supermercados = L.tileLayer.wms("http://localhost:8080/geoserver/webgis_loreto/wms?", {
-layers: "webgis_loreto:supermarket_loreto", //gisweb:supermarket_loreto
-format: 'image/png',
-transparent: true,
-version: '1.1.1',
-attribution: "SENCICO"
-});
-supermercados.addTo(map);
+    var latlngs = [
+        [-18.015923, -70.233196],
+[-18.015353, -70.232364],
+[-18.013544, -70.233682],
+[-18.009258, -70.227465],
+[-18.006198, -70.230391],
+[-18.003563, -70.232917],
+[-18.000747, -70.235066],
+[-17.997845, -70.237105],
+[-17.998173, -70.237652],
+[-17.998355, -70.237712],
+[-18.002738, -70.243310],
+[-18.001111, -70.244584],
+[-17.999278, -70.244912],
+[-17.994336, -70.244888],
+[-17.992928, -70.244609],
+[-17.992770, -70.244196],
+[-17.992260, -70.244269],
+[-17.991131, -70.245106],
+[-17.990487, -70.244147],
+[-17.990317, -70.244135],
+[-17.989686, -70.244584],
+[-17.988727, -70.243188],
+[-17.987549, -70.244014],
+[-17.984799, -70.239722],
+[-17.982899, -70.236844],
+[-17.979718, -70.239109],
+[-17.974728, -70.231866],
+[-17.977933, -70.229645],
+[-17.979342, -70.231660],
+[-17.978140, -70.232583],
+[-17.981665, -70.237714],
+[-17.982835, -70.236942],
+[-17.984732, -70.239783],
+[-17.983910, -70.240400],
+[-17.984576, -70.241396],
+[-17.984218, -70.241584],
+[-17.987927, -70.247321],
+[-17.989023, -70.246601],
+[-17.991393, -70.249515],
+[-17.994271, -70.251230],
+[-17.994441, -70.252013],
+[-17.995359, -70.253737],
+[-17.997921, -70.257295],
+[-17.999214, -70.256323],
+[-18.000392, -70.255947],
+[-18.002273, -70.254709],
+[-18.007992, -70.249306],
+[-18.011962, -70.246283],
+[-18.010311, -70.244225],
+[-18.008490, -70.242149],
+[-18.008016, -70.241323],
+[-18.007634, -70.239156],
+[-18.011337, -70.236946],
+[-18.015841, -70.233279],        
+    
+    ];
+    
+    var polyline = L.polyline(latlngs, {color: '#46FF33'}).addTo(map);
 
 var baseMaps = {
     "OSM": basemapOSM,
     "googleSat": googleSat,
     "googleHybrid": googleHybrid
     };
- var overlayMaps = {
-        "Farmacias": farmacias,
-        "Hospitales": hospitales,
-        "Hoteles": hoteles,
-        "Mercados": mercados,
-        "Museos": museos,
-        "Parques": parques,
-        "Restaurantes": restaurantes,
-        "Supermercados": supermercados,
-        "Limite Departamental": loreto
+    var overlayMaps = {
         
     };
-
     L.control.layers(baseMaps, overlayMaps,{
     position: 'topright', // 'topleft', 'bottomleft', 'bottomright'
     collapsed: false // true
     }).addTo(map);
-
-    L.control.scale({
-        imperial: false
-        }).addTo(map);
